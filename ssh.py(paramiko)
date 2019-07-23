@@ -1,0 +1,11 @@
+import paramiko
+import os
+import sys
+import time
+
+ssh = paramiko.SSHClient()
+ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+ssh.connect(hostname='35.194.246.50', port=22, username='ssh',password='f9806007')
+stdin, stdout, stderr = ssh.exec_command(' sudo cat /etc/httpd/logs/access_log')
+res = stdout.read().decode('utf-8')
+print(res)
